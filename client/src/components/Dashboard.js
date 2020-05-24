@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Dashboard = (props) => {
+const Dashboard = ({handleLogout}) => {
     return (
-        <div className="dashboard" onClick={()=>console.log("clicked")}>
+        <div className="dashboard">
             <h1>Dashboard</h1>
+            <button class="btn" onClick={handleLogout}>Logout</button>
         </div>
     )
 }

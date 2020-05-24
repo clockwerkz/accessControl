@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Router as BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
 
+import { userLevels } from './utilites.js/authorize';
+
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import AccessControl from './components/AccessControl';
@@ -15,13 +17,15 @@ const renderNoAccess = (permissionsNeeded) =>  <NoAccess permissionsNeeded={perm
 function App() {
   const [ user, setUser] =useState('');
 
-  const handleLogin = () => setUser('user');
+  const handleLogin = (userLevel) => setUser(userLevel);
+
+  const handleLogout = () => setUser('');
   return (
     <div className="App">
         <h1>React Access Control</h1>
-        {!user ? (<Login handleLogin={handleLogin}/>) : (<Dashboard />)}
+        {!user ? (<Login handleLogin={handleLogin}/>) : (<Dashboard handleLogout={handleLogout}/>)}
         <AccessControl 
-          userPermissions="read"
+          userPermissions={["read"]}
           allowedPermissions={["read"]}
           renderNoAccess={renderNoAccess}
         >
