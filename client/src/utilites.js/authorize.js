@@ -1,0 +1,1 @@
+export const checkPermissions = (userPermissions, allowedPermissions) => allowedPermissions && allowedPermissions.indexOf(userPermissions) !== -1;
