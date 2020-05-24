@@ -6,6 +6,10 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import AccessControl from './components/AccessControl';
 import StatsPanel from './components/StatsPanel';
+import NoAccess from './components/NoAccess';
+
+
+const renderNoAccess = (permissionsNeeded) =>  <NoAccess permissionsNeeded={permissionsNeeded} />;
 
 
 function App() {
@@ -16,7 +20,11 @@ function App() {
     <div className="App">
         <h1>React Access Control</h1>
         {!user ? (<Login handleLogin={handleLogin}/>) : (<Dashboard />)}
-        <AccessControl>
+        <AccessControl 
+          userPermissions="read"
+          allowedPermissions={["read"]}
+          renderNoAccess={renderNoAccess}
+        >
           <StatsPanel />
         </AccessControl>
     </div>

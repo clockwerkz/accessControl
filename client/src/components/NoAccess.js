@@ -1,9 +1,9 @@
 import React from 'react';
 
-const NoAccess = (props) => {
+const NoAccess = ({ permissionsNeeded }) => {
     return (
-        <div>
-            <h2>No Access</h2>
+        <div className="no-access">
+            <p className="no-access__message">Unauthorized -- You need the following permissions: <span className="no-access__permissions">{permissionsNeeded}</span></p>
         </div>
     )
 }

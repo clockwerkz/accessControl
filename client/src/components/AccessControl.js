@@ -11,9 +11,7 @@ const AccessControl = ({userPermissions, allowedPermissions, children, renderNoA
             {...children}
         )
     } else {
-        return (
-            <NoAccess />
-        )
+        return renderNoAccess();
     }
 }
 

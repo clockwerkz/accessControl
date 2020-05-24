@@ -8,3 +8,11 @@
 .login h1, .dashboard h1 {
     text-align: center;
 }
+
+.no-access__message {
+    color: red;
+}
+
+.no-access__permissions {
+    font-weight: bold;
+}
