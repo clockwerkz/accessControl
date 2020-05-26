@@ -50,6 +50,8 @@ h1, h2 {
 
 .dashboard {
     padding-bottom: 2rem;
+    min-height: 300px;
+    border: 1px solid black;
 }
 
 .stats-panel {

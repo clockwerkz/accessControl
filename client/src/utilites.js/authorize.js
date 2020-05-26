@@ -9,14 +9,10 @@ export const checkPermissions = (userPermissions, allowedPermissions) => {
     return allowed;
 };
 
-export const userLevels = {
-    plantManager : ['read:stats', 'control:reactor', 'control:emergencyAlert'],
-    safetyInspector : ['read:stats']
-}
-
-
-export const permissionLevels = {
-    StatsPanel: ['read:stats'],
-    ReactorControls: ['control:reactor'],
-    EmergencyCommunications: ['control:emergencyAlert']
+export const login = (level) => {
+    return new Promise((resolve, reject)=> {
+        setTimeout(()=> {
+            return level ? resolve(level) : reject('Invalid user');
+        },500);
+    });
 }

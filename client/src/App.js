@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
-import { Router as BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
-import { userLevels, permissionLevels } from './utilites.js/authorize';
+import { login } from './utilites.js/authorize';
 
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import AccessControl from './components/AccessControl';
-
-import NoAccess from './components/NoAccess';
+import ProtectedRoute from './components/routes/ProtectedRoute';
 
 
-const renderNoAccess = (permissionsNeeded) =>  <NoAccess permissionsNeeded={permissionsNeeded} />;
 
 function App() {
   const [ user, setUser] =useState('');
-  const userPermissions = (user && userLevels[user]) ? userLevels[user] : '';
 
-  const handleLogin = (userLevel) => setUser(userLevel);
+  const handleLogin = (requestedUser) => {
+    login(requestedUser)
+      .then(loggedUser => setUser(loggedUser));
+  }
 
   const handleLogout = () => setUser('');
   return (
-    <BrowserRouter>
-      <Route path="/dashboard">
-        <Dashboard />
+    <Router>
+      <Route path="/login">
+        <Login  handleLogin={handleLogin} user={user}/>
       </Route>
-    </BrowserRouter>
+      <ProtectedRoute path='/' component={Dashboard} handleLogout={handleLogout} user={user}/>  
+    </Router>
   );
 }
 
