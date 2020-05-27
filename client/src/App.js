@@ -13,7 +13,7 @@ import ProtectedRoute from './components/routes/ProtectedRoute';
 
 
 function App() {
-  const [ user, setUser] =useState('');
+  const [ user, setUser] =useState({});
 
   const handleLogin = (requestedUser) => {
     login(requestedUser)
