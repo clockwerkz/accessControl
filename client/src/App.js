@@ -7,6 +7,7 @@ import { login } from './utilites.js/authorize';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import NavBar from './components/NavBar';
+import Projects from './components/Projects';
 import ProtectedRoute from './components/routes/ProtectedRoute';
 
 
@@ -23,10 +24,13 @@ function App() {
   return (
     <Router>
       <NavBar user={user}/>
+      <ProtectedRoute path='/' exact component={Dashboard} handleLogout={handleLogout} user={user}/> 
       <Route path="/login">
         <Login  handleLogin={handleLogin} user={user}/>
+      </Route> 
+      <Route path='/projects'>
+        <Projects />
       </Route>
-      <ProtectedRoute path='/' component={Dashboard} handleLogout={handleLogout} user={user}/>  
     </Router>
   );
 }
