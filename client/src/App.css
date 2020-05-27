@@ -59,3 +59,16 @@ h1, h2 {
     align-items: center;
     margin: 1rem;
 }
+
+.project-member, .project-manager {
+    text-align: center;
+    width: 90%;
+    margin: 1rem auto;
+    background-color: #aaa;
+    border: 2px solid #444;
+}
+
+.project-manager {
+    background-color: #eee;
+    border: 2px solid black;
+}
