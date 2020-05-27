@@ -1,0 +1,56 @@
+.no-access__message {
+    text-align: center;
+    color: red;
+}
+
+.no-access__permissions {
+    font-weight: bold;
+}
+
+.dashboard {
+    padding-bottom: 2rem;
+    min-height: 300px;
+    border: 1px solid black;
+}
+
+.stats-panel {
+    margin: 0 auto;
+    width: 50%;
+    border: 1px solid black;
+    padding-bottom: 2rem;
+}
+
+.stats-panel__title {
+    border-bottom: 1px solid #333;
+    padding: 0.5rem;
+}
+
+.stats-panel__label {
+    margin: 0;
+    padding: 0;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.stats-panel__guage {
+    background-color: rgb(1, 85, 1);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem 0;
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.stats-panel__guage:hover {
+    background-color: green;
+}
+
+.panel-control {
+    width: 50%;
+    border: 1px solid #aaa;
+    margin: 2rem auto;
+    padding: 0.5rem 0 2rem;
+}

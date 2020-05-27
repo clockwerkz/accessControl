@@ -6,6 +6,7 @@ import { login } from './utilites.js/authorize';
 
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import NavBar from './components/NavBar';
 import ProtectedRoute from './components/routes/ProtectedRoute';
 
 
@@ -21,6 +22,7 @@ function App() {
   const handleLogout = () => setUser('');
   return (
     <Router>
+      <NavBar user={user}/>
       <Route path="/login">
         <Login  handleLogin={handleLogin} user={user}/>
       </Route>
