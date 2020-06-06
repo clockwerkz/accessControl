@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import NavBar from './components/NavBar';
 import Projects from './components/Projects';
+import Profile from './components/Profile';
 import ProtectedRoute from './components/routes/ProtectedRoute';
 
 
@@ -28,6 +29,7 @@ function App() {
       <Route path="/login">
         <Login  handleLogin={handleLogin} user={user}/>
       </Route> 
+      <Route path="/profile" component={Profile} />
       <Route path='/projects'>
         <Projects />
       </Route>
