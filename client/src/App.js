@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
@@ -14,17 +14,23 @@ import ProtectedRoute from './components/routes/ProtectedRoute';
 
 
 function App() {
-  const [ user, setUser] =useState({});
-
+  const [ user, setUser] =useState();
+  const [ msg, setMsg ] = useState('');
   const handleLogin = (requestedUser) => {
     login(requestedUser)
       .then(loggedUser => setUser(loggedUser));
   }
 
+// useEffect(()=>{
+//   fetch('localhost:5000/test')
+//   .then(res => res.json())
+// },[])
+
   const handleLogout = () => setUser('');
   return (
     <Router>
       <NavBar user={user}/>
+      {msg ? (<p>{msg}</p>):(<p>No Message from the back end</p>)}
       <ProtectedRoute path='/' exact component={Dashboard} handleLogout={handleLogout} user={user}/> 
       <Route path="/login">
         <Login  handleLogin={handleLogin} user={user}/>

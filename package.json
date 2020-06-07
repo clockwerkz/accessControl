@@ -1,0 +1,27 @@
+{
+  "name": "accesscontrol",
+  "version": "1.0.0",
+  "description": "MERN Stack project that incorporates OAuth and Controlled Access depending on user's assigned level.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clockwerkz/accessControl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clockwerkz/accessControl/issues"
+  },
+  "homepage": "https://github.com/clockwerkz/accessControl#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
