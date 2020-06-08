@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth0 } from "../../react-auth0-spa";
+import { useAuth0 } from "../react-auth0-spa";
 
 const ExternalApi = () => {
   const [showResult, setShowResult] = useState(false);
@@ -10,7 +10,7 @@ const ExternalApi = () => {
     try {
       const token = await getTokenSilently();
 
-      const response = await fetch("http://localhost:3001/api/external", {
+      const response = await fetch("http://localhost:5000/api/external", {
         headers: {
           Authorization: `Bearer ${token}`
         }
