@@ -1,44 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import './App.css';
+import React from "react";
+import { Router, Route, Switch } from "react-router-dom";
+import { Container } from "reactstrap";
 
-import { login } from './utilites.js/authorize';
+import PrivateRoute from "./components/PrivateRoute";
+import Loading from "./components/Loading";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import Home from "./views/Home";
+import Profile from "./views/Profile";
+import ExternalApi from "./views/ExternalApi";
+import { useAuth0 } from "./react-auth0-spa";
+import history from "./utils/history";
 
-import Login from './components/Login';
-import Dashboard from './components/Dashboard';
-import NavBar from './components/NavBar';
-import Projects from './components/Projects';
-import Profile from './components/Profile';
-import PrivateRoute from './components/PrivateRoute';
-import ExternalApi from "./components/views/ExternalApi";
-import ProtectedRoute from './components/routes/ProtectedRoute';
+// styles
+import "./App.css";
 
+// fontawesome
+// import initFontAwesome from "./utils/initFontAwesome";
+// initFontAwesome();
 
+const App = () => {
+  const { loading } = useAuth0();
 
-function App() {
-  const [ user, setUser] =useState();
-  const handleLogin = (requestedUser) => {
-    login(requestedUser)
-      .then(loggedUser => setUser(loggedUser));
+  if (loading) {
+    return <Loading />;
   }
 
-
-
-  const handleLogout = () => setUser('');
   return (
-    <Router>
-      <NavBar user={user}/>
-      <ProtectedRoute path='/' exact component={Dashboard} handleLogout={handleLogout} user={user}/> 
-      <Route path="/login">
-        <Login  handleLogin={handleLogin} user={user}/>
-      </Route> 
-      <Route path="/profile" component={Profile} />
-      <Route path='/projects'>
-        <Projects />
-      </Route>
-      <PrivateRoute path="/external-api" component={ExternalApi} />
+    <Router history={history}>
+      <div id="app" className="d-flex flex-column h-100">
+        <NavBar />
+        <Container className="flex-grow-1 mt-5">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/external-api" component={ExternalApi} />
+          </Switch>
+        </Container>
+        <Footer />
+      </div>
     </Router>
   );
-}
+};
 
 export default App;
