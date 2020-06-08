@@ -1,8 +1,38 @@
 const express = require('express');
-
 const app = express();
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
 
 const PORT = process.env.PORT || 5000;
+
+// Set up Auth0 configuration
+const authConfig = {
+    domain: "YOUR_DOMAIN",
+    audience: "YOUR_API_IDENTIFIER"
+};
+
+const checkJwt = jwt({
+    secret: jwksRsa.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: 'https://dev-64n7s4br.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'http://localhost:5000/',
+  issuer: 'https://dev-64n7s4br.auth0.com/',
+  algorithms: ['RS256']
+});
+  
+
+
+
+app.get("/api/external", checkJwt, (req, res) => {
+    console.log('route hit');
+    res.send({
+      msg: "Your Access Token was successfully validated!"
+    });
+});
+
 
 app.get('/test', (req, res)=> {
     console.log('route hit');
