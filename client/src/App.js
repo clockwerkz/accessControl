@@ -9,6 +9,8 @@ import Dashboard from './components/Dashboard';
 import NavBar from './components/NavBar';
 import Projects from './components/Projects';
 import Profile from './components/Profile';
+import PrivateRoute from './components/PrivateRoute';
+import ExternalApi from "./components/views/ExternalApi";
 import ProtectedRoute from './components/routes/ProtectedRoute';
 
 
@@ -34,6 +36,7 @@ function App() {
       <Route path='/projects'>
         <Projects />
       </Route>
+      <PrivateRoute path="/external-api" component={ExternalApi} />
     </Router>
   );
 }
