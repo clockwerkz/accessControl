@@ -28,7 +28,8 @@ const checkJwt = jwt({
 
 
 app.get("/api/external", checkJwt, (req, res) => {
-    console.log('route hit');
+    const userID = req.user['http://localhost:5000/email']
+    console.log('route hit', userID);
     res.send({
       msg: "Your Access Token was successfully validated!"
     });
